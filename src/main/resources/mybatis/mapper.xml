@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.intflow.stock.mapper.TestMapper">
+<mapper namespace="com.intflow.stock.mapper.StockMapper">
     <select id="selectKospi" resultType="map">
-        SELECT time, quote FROM kospi LIMIT 10
+        SELECT time, quote FROM kospi ORDER BY no DESC
+    </select>
+
+    <select id="selectKosdaq" resultType="map">
+        SELECT time, quote FROM kosdaq ORDER BY no DESC
+    </select>
+
+    <select id="selectFut" resultType="map">
+        SELECT time, quote FROM fut ORDER BY no DESC
     </select>
 </mapper>

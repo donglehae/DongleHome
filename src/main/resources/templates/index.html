@@ -1,53 +1,112 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/common :: head('Hello, Dongle!')">
-<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-
-<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">-->
-<!--    <link href="starter-template.css" th:href="@{/starter-template.css}" rel="stylesheet">-->
-
-<!--    <title>Hello, Dongle!</title>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- <html lang="en" style="height: 100%"> -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Finance_Crawling</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- 차트 링크 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/common :: menu('main')">
-    <!--    <a class="navbar-brand" href="#">Dongle</a>-->
-    <!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--        <span class="navbar-toggler-icon"></span>-->
-    <!--    </button>-->
-
-    <!--    <div class="collapse navbar-collapse" id="navbarsExampleDefault">-->
-    <!--        <ul class="navbar-nav mr-auto">-->
-    <!--            <li class="nav-item active">-->
-    <!--                <a class="nav-link" href="#">Main <span class="sr-only">(current)</span></a>-->
-    <!--            </li>-->
-    <!--            <li class="nav-item">-->
-    <!--                <a class="nav-link" href="#">DashBoard</a>-->
-    <!--            </li>-->
-    <!--        </ul>-->
-    <!--    </div>-->
-    </nav>
-
-<main role="main" class="container">
-
-    <div class="starter-template">
-        <h1>Main Page</h1>
-        <p class="lead">실시간 주식 데이터 크롤링 및 DB 생성 후 웹 표출<br>
-            분 단위의 시세 정보를 실시간으로 크롤링 하고 DB 생성<br>
-            각 테이블 및 시세 데이터에 대해 웹에 그래프로 표출<br><br><br>
-            코스피 값 : <span th:text="${kospi}"></span><br>
-            코스닥 값 : <span th:text="${kosdaq}"></span><br>
-            선물 값 : <span th:text="${fut}"></span></p>
+<div class="container">
+    <div class="row my-3">
+        <div class="col"><h4>Finance_Crawling</h4></div>
     </div>
+    <div class="row my-2">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="myChart" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-</main>
+<!-- 부트스트랩 -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script> <!-- 차트 -->
+<script th:inline="javascript">
+    var label_1 = /*[[${label_1}]]*/ '00:00';
+    var label_2 = /*[[${label_2}]]*/ '00:00';
+    var label_3 = /*[[${label_3}]]*/ '00:00';
+    var label_4 = /*[[${label_4}]]*/ '00:00';
+    var label_5 = /*[[${label_5}]]*/ '00:00';
+    var label_6 = /*[[${label_6}]]*/ '00:00';
+    var label_7 = /*[[${label_7}]]*/ '00:00';
+    var label_8 = /*[[${label_8}]]*/ '00:00';
+    var label_9 = /*[[${label_9}]]*/ '00:00';
+    var label_10 = /*[[${label_10}]]*/ '00:00';
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    var kospi_1 = /*[[${kospi_1}]]*/ 0;
+    var kospi_2 = /*[[${kospi_2}]]*/ 0;
+    var kospi_3 = /*[[${kospi_3}]]*/ 0;
+    var kospi_4 = /*[[${kospi_4}]]*/ 0;
+    var kospi_5 = /*[[${kospi_5}]]*/ 0;
+    var kospi_6 = /*[[${kospi_6}]]*/ 0;
+    var kospi_7 = /*[[${kospi_7}]]*/ 0;
+    var kospi_8 = /*[[${kospi_8}]]*/ 0;
+    var kospi_9 = /*[[${kospi_9}]]*/ 0;
+    var kospi_10 = /*[[${kospi_10}]]*/ 0;
+
+    var kosdaq_1 = /*[[${kosdaq_1}]]*/ 0;
+    var kosdaq_2 = /*[[${kosdaq_2}]]*/ 0;
+    var kosdaq_3 = /*[[${kosdaq_3}]]*/ 0;
+    var kosdaq_4 = /*[[${kosdaq_4}]]*/ 0;
+    var kosdaq_5 = /*[[${kosdaq_5}]]*/ 0;
+    var kosdaq_6 = /*[[${kosdaq_6}]]*/ 0;
+    var kosdaq_7 = /*[[${kosdaq_7}]]*/ 0;
+    var kosdaq_8 = /*[[${kosdaq_8}]]*/ 0;
+    var kosdaq_9 = /*[[${kosdaq_9}]]*/ 0;
+    var kosdaq_10 = /*[[${kosdaq_10}]]*/ 0;
+    
+    var fut_1 = /*[[${fut_1}]]*/ 0;
+    var fut_2 = /*[[${fut_2}]]*/ 0;
+    var fut_3 = /*[[${fut_3}]]*/ 0;
+    var fut_4 = /*[[${fut_4}]]*/ 0;
+    var fut_5 = /*[[${fut_5}]]*/ 0;
+    var fut_6 = /*[[${fut_6}]]*/ 0;
+    var fut_7 = /*[[${fut_7}]]*/ 0;
+    var fut_8 = /*[[${fut_8}]]*/ 0;
+    var fut_9 = /*[[${fut_9}]]*/ 0;
+    var fut_10 = /*[[${fut_10}]]*/ 0;
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [label_1, label_2, label_3, label_4, label_5, label_6, label_7, label_8, label_9, label_10],
+            datasets: [{
+                label: 'Kospi',
+                backgroundColor: 'transparent',
+                borderColor: 'red',
+                data: [kospi_1, kospi_2, kospi_3, kospi_4, kospi_5, kospi_6, kospi_7, kospi_8, kospi_9, kospi_10]
+            },
+            {
+                label: 'Kosdaq',
+                backgroundColor: 'transparent',
+                borderColor: 'blue',
+                data: [kosdaq_1, kosdaq_2, kosdaq_3, kosdaq_4, kosdaq_5, kosdaq_6, kosdaq_7, kosdaq_8, kosdaq_9, kosdaq_10]
+            },
+            {
+                label: 'Fut',
+                backgroundColor: 'transparent',
+                borderColor: 'green',
+                data: [fut_1, fut_2, fut_3, fut_4, fut_5, fut_6, fut_7, fut_8, fut_9, fut_10]
+            }]
+        },
+        options: {}
+    });
+</script>
 </body>
 </html>
