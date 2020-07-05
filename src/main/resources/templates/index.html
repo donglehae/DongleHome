@@ -19,7 +19,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <canvas id="myChart" height="100"></canvas>
+                    <canvas id="myChart" height="200"></canvas>
                 </div>
             </div>
         </div>
@@ -85,28 +85,30 @@
     var chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [label_1, label_2, label_3, label_4, label_5, label_6, label_7, label_8, label_9, label_10],
+            labels: [label_10, label_9, label_8, label_7, label_6, label_5, label_4, label_3, label_2, label_1],
             datasets: [{
                 label: 'Kospi',
                 backgroundColor: 'transparent',
                 borderColor: 'red',
-                data: [kospi_1, kospi_2, kospi_3, kospi_4, kospi_5, kospi_6, kospi_7, kospi_8, kospi_9, kospi_10]
+                data: [kospi_10, kospi_9, kospi_8, kospi_7, kospi_6, kospi_5, kospi_4, kospi_3, kospi_2, kospi_1]
             },
             {
                 label: 'Kosdaq',
                 backgroundColor: 'transparent',
                 borderColor: 'blue',
-                data: [kosdaq_1, kosdaq_2, kosdaq_3, kosdaq_4, kosdaq_5, kosdaq_6, kosdaq_7, kosdaq_8, kosdaq_9, kosdaq_10]
+                data: [kosdaq_10, kosdaq_9, kosdaq_8, kosdaq_7, kosdaq_6, kosdaq_5, kosdaq_4, kosdaq_3, kosdaq_2, kosdaq_1]
             },
             {
                 label: 'Fut',
                 backgroundColor: 'transparent',
                 borderColor: 'green',
-                data: [fut_1, fut_2, fut_3, fut_4, fut_5, fut_6, fut_7, fut_8, fut_9, fut_10]
+                data: [fut_10, fut_9, fut_8, fut_7, fut_6, fut_5, fut_4, fut_3, fut_2, fut_1]
             }]
         },
         options: {}
     });
+
+    setTimeout("location.reload()", 30000)
 </script>
 </body>
 </html>
