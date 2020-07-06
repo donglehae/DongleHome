@@ -19,11 +19,79 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <canvas id="myChart" height="200"></canvas>
+                    <canvas id="myChart" height="150"></canvas>
                 </div>
             </div>
         </div>
     </div>
+    <style type="text/css">
+.tg  {border-collapse:collapse;border-color:#C44D58;border-spacing:0;}
+.tg td{background-color:#F9CDAD;border-color:#C44D58;border-style:solid;border-width:1px;color:#002b36;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:5px 20px;word-break:normal;}
+.tg th{background-color:#FE4365;border-color:#C44D58;border-style:solid;border-width:1px;color:#fdf6e3;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:5px 20px;word-break:normal;}
+.tg .tg-npz6{background-color:#c0c0c0;border-color:#000000;text-align:center;vertical-align:top}
+.tg .tg-x510{background-color:#7876ff;border-color:#000000;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-57tu{background-color:#ff7b7b;border-color:#000000;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-9md5{background-color:#269b00;border-color:#000000;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-w4w7{background-color:#FFF;border-color:#000000;text-align:center;vertical-align:top}
+.tg .tg-rizn{background-color:#FFF;border-color:#000000;color:#000000;text-align:center;vertical-align:top}
+.tg .tg-jbyd{background-color:#ffffff;border-color:#000000;text-align:center;vertical-align:top}
+</style>
+    <table class="tg">
+        <thead>
+        <tr>
+            <th class="tg-npz6" colspan="2">시간</th>
+            <th class="tg-57tu" colspan="2">코스피</th>
+            <th class="tg-x510" colspan="2">코스닥</th>
+            <th class="tg-9md5" colspan="2">선물</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="tg-w4w7" colspan="2"><span th:text="${label_1}"></span></td>
+            <td class="tg-rizn" colspan="2"><span th:text="${kospi_1}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kosdaq_1}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${fut_1}"></span></td>
+        </tr>
+        <tr>
+            <td class="tg-w4w7" colspan="2"><span th:text="${label_2}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kospi_2}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kosdaq_2}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${fut_2}"></span></td>
+        </tr>
+        <tr>
+            <td class="tg-w4w7" colspan="2"><span th:text="${label_3}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kospi_3}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kosdaq_3}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${fut_3}"></span></td>
+        </tr>
+        <tr>
+            <td class="tg-w4w7" colspan="2"><span th:text="${label_4}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kospi_4}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kosdaq_4}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${fut_4}"></span></td>
+        </tr>
+        <tr>
+            <td class="tg-w4w7" colspan="2"><span th:text="${label_5}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kospi_5}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kosdaq_5}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${fut_5}"></span></td>
+        </tr>
+        <tr>
+            <td class="tg-jbyd" colspan="2"><span th:text="${label_6}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kospi_6}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kosdaq_6}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${fut_6}"></span></td>
+        </tr>
+        <tr>
+            <td class="tg-jbyd" colspan="2"><span th:text="${label_7}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kospi_7}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${kosdaq_7}"></span></td>
+            <td class="tg-w4w7" colspan="2"><span th:text="${fut_7}"></span></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <!-- 부트스트랩 -->
@@ -37,49 +105,49 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script> <!-- 차트 -->
 <script th:inline="javascript">
-    var label_1 = /*[[${label_1}]]*/ '00:00';
-    var label_2 = /*[[${label_2}]]*/ '00:00';
-    var label_3 = /*[[${label_3}]]*/ '00:00';
-    var label_4 = /*[[${label_4}]]*/ '00:00';
-    var label_5 = /*[[${label_5}]]*/ '00:00';
-    var label_6 = /*[[${label_6}]]*/ '00:00';
-    var label_7 = /*[[${label_7}]]*/ '00:00';
-    var label_8 = /*[[${label_8}]]*/ '00:00';
-    var label_9 = /*[[${label_9}]]*/ '00:00';
-    var label_10 = /*[[${label_10}]]*/ '00:00';
+    var label_1 = /*[[${label_1}]]*/ ;
+    var label_2 = /*[[${label_2}]]*/ ;
+    var label_3 = /*[[${label_3}]]*/ ;
+    var label_4 = /*[[${label_4}]]*/ ;
+    var label_5 = /*[[${label_5}]]*/ ;
+    var label_6 = /*[[${label_6}]]*/ ;
+    var label_7 = /*[[${label_7}]]*/ ;
+    var label_8 = /*[[${label_8}]]*/ ;
+    var label_9 = /*[[${label_9}]]*/ ;
+    var label_10 = /*[[${label_10}]]*/ ;
 
-    var kospi_1 = /*[[${kospi_1}]]*/ 0;
-    var kospi_2 = /*[[${kospi_2}]]*/ 0;
-    var kospi_3 = /*[[${kospi_3}]]*/ 0;
-    var kospi_4 = /*[[${kospi_4}]]*/ 0;
-    var kospi_5 = /*[[${kospi_5}]]*/ 0;
-    var kospi_6 = /*[[${kospi_6}]]*/ 0;
-    var kospi_7 = /*[[${kospi_7}]]*/ 0;
-    var kospi_8 = /*[[${kospi_8}]]*/ 0;
-    var kospi_9 = /*[[${kospi_9}]]*/ 0;
-    var kospi_10 = /*[[${kospi_10}]]*/ 0;
+    var kospi_1 = /*[[${kospi_1}]]*/ ;
+    var kospi_2 = /*[[${kospi_2}]]*/ ;
+    var kospi_3 = /*[[${kospi_3}]]*/ ;
+    var kospi_4 = /*[[${kospi_4}]]*/ ;
+    var kospi_5 = /*[[${kospi_5}]]*/ ;
+    var kospi_6 = /*[[${kospi_6}]]*/ ;
+    var kospi_7 = /*[[${kospi_7}]]*/ ;
+    var kospi_8 = /*[[${kospi_8}]]*/ ;
+    var kospi_9 = /*[[${kospi_9}]]*/ ;
+    var kospi_10 = /*[[${kospi_10}]]*/ ;
 
-    var kosdaq_1 = /*[[${kosdaq_1}]]*/ 0;
-    var kosdaq_2 = /*[[${kosdaq_2}]]*/ 0;
-    var kosdaq_3 = /*[[${kosdaq_3}]]*/ 0;
-    var kosdaq_4 = /*[[${kosdaq_4}]]*/ 0;
-    var kosdaq_5 = /*[[${kosdaq_5}]]*/ 0;
-    var kosdaq_6 = /*[[${kosdaq_6}]]*/ 0;
-    var kosdaq_7 = /*[[${kosdaq_7}]]*/ 0;
-    var kosdaq_8 = /*[[${kosdaq_8}]]*/ 0;
-    var kosdaq_9 = /*[[${kosdaq_9}]]*/ 0;
-    var kosdaq_10 = /*[[${kosdaq_10}]]*/ 0;
+    var kosdaq_1 = /*[[${kosdaq_1}]]*/ ;
+    var kosdaq_2 = /*[[${kosdaq_2}]]*/ ;
+    var kosdaq_3 = /*[[${kosdaq_3}]]*/ ;
+    var kosdaq_4 = /*[[${kosdaq_4}]]*/ ;
+    var kosdaq_5 = /*[[${kosdaq_5}]]*/ ;
+    var kosdaq_6 = /*[[${kosdaq_6}]]*/ ;
+    var kosdaq_7 = /*[[${kosdaq_7}]]*/ ;
+    var kosdaq_8 = /*[[${kosdaq_8}]]*/ ;
+    var kosdaq_9 = /*[[${kosdaq_9}]]*/ ;
+    var kosdaq_10 = /*[[${kosdaq_10}]]*/ ;
     
-    var fut_1 = /*[[${fut_1}]]*/ 0;
-    var fut_2 = /*[[${fut_2}]]*/ 0;
-    var fut_3 = /*[[${fut_3}]]*/ 0;
-    var fut_4 = /*[[${fut_4}]]*/ 0;
-    var fut_5 = /*[[${fut_5}]]*/ 0;
-    var fut_6 = /*[[${fut_6}]]*/ 0;
-    var fut_7 = /*[[${fut_7}]]*/ 0;
-    var fut_8 = /*[[${fut_8}]]*/ 0;
-    var fut_9 = /*[[${fut_9}]]*/ 0;
-    var fut_10 = /*[[${fut_10}]]*/ 0;
+    var fut_1 = /*[[${fut_1}]]*/ ;
+    var fut_2 = /*[[${fut_2}]]*/ ;
+    var fut_3 = /*[[${fut_3}]]*/ ;
+    var fut_4 = /*[[${fut_4}]]*/ ;
+    var fut_5 = /*[[${fut_5}]]*/ ;
+    var fut_6 = /*[[${fut_6}]]*/ ;
+    var fut_7 = /*[[${fut_7}]]*/ ;
+    var fut_8 = /*[[${fut_8}]]*/ ;
+    var fut_9 = /*[[${fut_9}]]*/ ;
+    var fut_10 = /*[[${fut_10}]]*/ ;
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
